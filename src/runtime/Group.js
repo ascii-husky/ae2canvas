@@ -83,6 +83,8 @@ Group.prototype.draw = function (ctx, time, parentFill, parentStroke) {
         }
     }
 
+
+
     //TODO get order
     if (fill) ctx.fill();
     if (stroke) ctx.stroke();
