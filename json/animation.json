@@ -1,1 +1,260 @@
-{"groups":[{"out":16667,"name":"Shape Layer 1","groups":[{"name":"small","shapes":[{"name":"Rectangle Path 1","type":"rect","size":[{"t":0,"v":[404,374]}],"position":[{"t":0,"v":[0,0]}],"roundness":[{"t":0,"v":0}]}],"transform":{"positionX":[{"t":0,"v":-250}],"positionY":[{"t":0,"v":50}],"scaleX":[{"t":0,"v":0.3226}],"scaleY":[{"t":0,"v":0.3414}],"rotation":[{"t":0,"v":45.2632}]}},{"name":"gross","shapes":[{"name":"Rectangle Path 1","type":"rect","size":[{"t":0,"v":[404,374]}],"position":[{"t":0,"v":[0,0]}],"roundness":[{"t":0,"v":0}]}],"transform":{"positionX":[{"t":0,"v":-516}],"positionY":[{"t":0,"v":40}],"rotation":[{"t":0,"v":44.4828}]}},{"name":"kreis","shapes":[{"name":"Ellipse Path 1","type":"ellipse","size":[{"t":0,"v":[366,364]}],"position":[{"t":0,"v":[0,0]}]}],"transform":{"positionX":[{"t":0,"v":-259}],"positionY":[{"t":0,"v":73}],"scaleX":[{"t":0,"v":0.9508}],"scaleY":[{"t":0,"v":0.9508}]}}],"merge":{"type":4},"fill":{"color":[{"t":0,"v":[36,104,15]}],"opacity":[{"t":0,"v":1}]},"transform":{"positionX":[{"t":0,"v":885}],"positionY":[{"t":0,"v":316}],"skew":[{"t":0,"v":[100,100,100]}],"skewAxis":[{"t":0,"v":[100,100,100]}]}}],"duration":16666.6666666667,"width":1280,"height":720}
+{"groups"    : [
+    {
+        "out"      : 16667,
+        "name"     : "Shape Layer 1",
+        "items"    : [
+            {
+                "color"  : [
+                    {
+                        "t": 0,
+                        "v": [36, 104, 15]
+                    }
+                ],
+                "opacity": [
+                    {
+                        "t": 0,
+                        "v": 1
+                    }
+                ]
+            },
+            {
+                "color"  : [
+                    {
+                        "t": 0,
+                        "v": [91, 255, 41]
+                    }
+                ],
+                "opacity": [
+                    {
+                        "t": 0,
+                        "v": 1
+                    }
+                ]
+            },
+            {
+                "type": 3
+            },
+            {
+                "name"     : "small",
+                "items"    : [
+                    {
+                        "color"  : [
+                            {
+                                "t": 0,
+                                "v": [0, 255, 84]
+                            }
+                        ],
+                        "opacity": [
+                            {
+                                "t": 0,
+                                "v": 1
+                            }
+                        ]
+                    },
+                    {
+                        "name"     : "Rectangle Path 1",
+                        "type"     : "rect",
+                        "size"     : [
+                            {
+                                "t": 0,
+                                "v": [404, 374]
+                            }
+                        ],
+                        "position" : [
+                            {
+                                "t": 0,
+                                "v": [0, 0]
+                            }
+                        ],
+                        "roundness": [
+                            {
+                                "t": 0,
+                                "v": 0
+                            }
+                        ]
+                    }
+                ],
+                "transform": {
+                    "positionX": [
+                        {
+                            "t": 0,
+                            "v": -250
+                        }
+                    ],
+                    "positionY": [
+                        {
+                            "t": 0,
+                            "v": 50
+                        }
+                    ],
+                    "scaleX"   : [
+                        {
+                            "t": 0,
+                            "v": 0.3226
+                        }
+                    ],
+                    "scaleY"   : [
+                        {
+                            "t": 0,
+                            "v": 0.3414
+                        }
+                    ],
+                    "rotation" : [
+                        {
+                            "t": 0,
+                            "v": 45.2632
+                        }
+                    ]
+                }
+            },
+            {
+                "name"     : "gross",
+                "items"    : [
+                    {
+                        "color"  : [
+                            {
+                                "t": 0,
+                                "v": [0, 132, 255]
+                            }
+                        ],
+                        "opacity": [
+                            {
+                                "t": 0,
+                                "v": 1
+                            }
+                        ]
+                    },
+                    {
+                        "name"     : "Rectangle Path 1",
+                        "type"     : "rect",
+                        "size"     : [
+                            {
+                                "t": 0,
+                                "v": [404, 374]
+                            }
+                        ],
+                        "position" : [
+                            {
+                                "t": 0,
+                                "v": [0, 0]
+                            }
+                        ],
+                        "roundness": [
+                            {
+                                "t": 0,
+                                "v": 0
+                            }
+                        ]
+                    }
+                ],
+                "transform": {
+                    "positionX": [
+                        {
+                            "t": 0,
+                            "v": -516
+                        }
+                    ],
+                    "positionY": [
+                        {
+                            "t": 0,
+                            "v": 40
+                        }
+                    ],
+                    "rotation" : [
+                        {
+                            "t": 0,
+                            "v": 44.4828
+                        }
+                    ]
+                }
+            },
+            {
+                "name"     : "kreis",
+                "items"    : [
+                    {
+                        "color"  : [
+                            {
+                                "t": 0,
+                                "v": [255, 0, 0]
+                            }
+                        ],
+                        "opacity": [
+                            {
+                                "t": 0,
+                                "v": 1
+                            }
+                        ]
+                    },
+                    {
+                        "name"    : "Ellipse Path 1",
+                        "type"    : "ellipse",
+                        "size"    : [
+                            {
+                                "t": 0,
+                                "v": [366, 364]
+                            }
+                        ],
+                        "position": [
+                            {
+                                "t": 0,
+                                "v": [0, 0]
+                            }
+                        ]
+                    }
+                ],
+                "transform": {
+                    "positionX": [
+                        {
+                            "t": 0,
+                            "v": -259
+                        }
+                    ],
+                    "positionY": [
+                        {
+                            "t": 0,
+                            "v": 73
+                        }
+                    ],
+                    "scaleX"   : [
+                        {
+                            "t": 0,
+                            "v": 0.9508
+                        }
+                    ],
+                    "scaleY"   : [
+                        {
+                            "t": 0,
+                            "v": 0.9508
+                        }
+                    ]
+                }
+            }
+        ],
+        "transform": {
+            "positionX": [
+                {
+                    "t": 0,
+                    "v": 885
+                }
+            ],
+            "positionY": [
+                {
+                    "t": 0,
+                    "v": 316
+                }
+            ],
+            "skew"     : [
+                {
+                    "t": 0,
+                    "v": [100, 100, 100]
+                }
+            ],
+            "skewAxis" : [
+                {
+                    "t": 0,
+                    "v": [100, 100, 100]
+                }
+            ]
+        }
+    }
+], "duration": 16666.6666666667, "width": 1280, "height": 720}

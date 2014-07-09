@@ -3,7 +3,7 @@
     if (!(data instanceof PropertyGroup)) return null;
 
     var fill = {};
-//    fill.composite = data.property('ADBE Vector Composite Order');
+    fill.type = 'fill';
     fill.color = getProperty(data.property('ADBE Vector Fill Color'));
     fill.color = normalizeColor(fill.color);
     fill.opacity = getProperty(data.property('ADBE Vector Fill Opacity'));

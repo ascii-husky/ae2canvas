@@ -16,41 +16,42 @@ function Group(data) {
 
     this.name = data.name;
     this.index = data.index;
-
-    if (data.in) this.in = data.in;
-    else this.in = 0;
-
-    if (data.out) this.out = data.out;
-    else this.out = 500000; // FIXME get comp total duration
-
-    if (data.fill) this.fill = new Fill(data.fill);
-    if (data.stroke) this.stroke = new Stroke(data.stroke);
-
-    if (data.merge) this.merge = new Merge(data.merge);
-
     this.transform = new Transform(data.transform);
-    if (data.groups) {
-        this.groups = [];
-        for (var i = 0; i < data.groups.length; i++) {
-            this.groups.push(new Group(data.groups[i]));
-        }
-    }
 
-    if (data.shapes) {
-        this.shapes = [];
-        for (var j = 0; j < data.shapes.length; j++) {
-            var shape = data.shapes[j];
-            if (shape.type === 'path') {
-                if (shape.isAnimated) this.shapes.push(new AnimatedPath(shape));
-                else this.shapes.push(new Path(shape));
-            } else if (shape.type === 'rect') {
-                this.shapes.push(new Rect(shape));
-            } else if (shape.type === 'ellipse') {
-                this.shapes.push(new Ellipse(shape));
-            } else if (shape.type === 'polystar') {
-                this.shapes.push(new Polystar(shape));
+    data.in ? this.in = data.in : this.in = 0;
+    data.out ? this.out = data.out : this.out = 500000; // FIXME get comp total duration
+
+    if (data.items) {
+        this.items = [];
+        for (var i = 0; i < data.items; i++) {
+            var item = data.items[i];
+
+            switch (item.type) {
+                case 'fill':
+                    this.items.push(new Fill(item));
+                    break;
+                case 'stroke':
+                    this.items.push(new Stroke(item));
+                    break;
+                case 'merge':
+                    this.items.push(new Merge(item));
+                    break;
+                case 'path':
+                    this.items.push(new Path(item));
+                    break;
+                case 'rect':
+                    this.items.push(new Rect(item));
+                    break;
+                case 'ellipse':
+                    this.items.push(new Ellipse(item));
+                    break;
+                case 'polystar':
+                    this.items.push(new Polystar(item));
+                    break;
+                case 'group':
+                    this.items.push(new Group(item));
+                    break;
             }
-
         }
     }
 }
@@ -82,8 +83,6 @@ Group.prototype.draw = function (ctx, time, parentFill, parentStroke) {
             ctx.closePath();
         }
     }
-
-
 
     //TODO get order
     if (fill) ctx.fill();

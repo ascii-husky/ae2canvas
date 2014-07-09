@@ -19,6 +19,7 @@ function Runtime(data) {
     this.reset();
     this.started = false;
 
+
 }
 
 Runtime.prototype = {
