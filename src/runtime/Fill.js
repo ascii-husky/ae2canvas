@@ -37,4 +37,9 @@ Fill.prototype.reset = function () {
     this.opacity.reset();
 };
 
+Fill.prototype.draw = function () {
+    this.color.reset();
+    this.opacity.reset();
+};
+
 module.exports = Fill;

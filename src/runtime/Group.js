@@ -60,29 +60,21 @@ Group.prototype.draw = function (ctx, time, parentFill, parentStroke) {
 
     ctx.save();
 
-    //TODO check if color/stroke is changing over time
+    this.transform.transform(ctx, time);
+
+    ctx.beginPath();
+    if (this.items) {
+        for (var i = 0; i < this.items.length; i++) {
+            this.items[i].draw(ctx, time);
+        }
+    }
+    ctx.closePath();
 
     var fill = this.fill || parentFill;
     var stroke = this.stroke || parentStroke;
 
     if (fill) fill.setColor(ctx, time);
     if (stroke) stroke.setStroke(ctx, time);
-
-    this.transform.transform(ctx, time);
-//    if (this.merge) this.merge.setCompositeOperation(ctx);
-//    ctx.globalCompositeOperation = 'source-over';
-
-//    console.log(this.name, ctx.globalCompositeOperation);
-
-    ctx.beginPath();
-    if (this.shapes) {
-        for (var i = 0; i < this.shapes.length; i++) {
-            this.shapes[i].draw(ctx, time);
-        }
-        if (this.shapes[this.shapes.length - 1].closed) {
-            ctx.closePath();
-        }
-    }
 
     //TODO get order
     if (fill) ctx.fill();
@@ -99,8 +91,6 @@ Group.prototype.draw = function (ctx, time, parentFill, parentStroke) {
             }
         }
     }
-
-    //    reset
 
     ctx.restore();
 };
