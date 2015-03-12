@@ -22,7 +22,7 @@ function getPath(data) {
             var inType = data.keyInInterpolationType(i),
                 outType = data.keyOutInterpolationType(i);
 
-            obj.v = getPoint(data.keyValue(i));
+            obj.v = getPoint(data.keyValue(i), path.closed);
             obj.t = Math.round(data.keyTime(i) * 1000);
 
             if (i > 1 && (inType === KeyframeInterpolationType.BEZIER)) {
@@ -48,14 +48,14 @@ function getPath(data) {
 
         path.isAnimated = false;
         obj.t = 0;
-        obj.v = getPoint(data.value);
+        obj.v = getPoint(data.value, path.closed);
         path.frames.push(obj);
     }
 
     path.frames = getTotalLength(path.frames);
     return path;
 
-    function getPoint(pointData) {
+    function getPoint(pointData, isClosed) {
         var vertices = [];
         for (var i = 0; i < pointData.vertices.length; i++) {
 
@@ -69,6 +69,12 @@ function getPath(data) {
 
             vertices.push(vertex);
         }
+
+        if (isClosed) {
+            var firstVertex = vertices[0];
+            vertices.push([firstVertex[0], firstVertex[1], firstVertex[2], firstVertex[3], firstVertex[4], firstVertex[5]]);
+        }
+
         return vertices;
     }
 

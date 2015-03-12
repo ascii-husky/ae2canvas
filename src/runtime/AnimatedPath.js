@@ -10,7 +10,10 @@ function AnimatedPath(data) {
 
 AnimatedPath.prototype = Object.create(Path.prototype);
 
-AnimatedPath.prototype.getValue = function (time) {
+AnimatedPath.prototype.updateCurves = function (time) {
+
+    console.log('updateCurves');
+
     if (this.finished && time >= this.nextFrame.t) {
         return this.nextFrame;
     } else if (!this.started && time <= this.lastFrame.t) {
@@ -37,7 +40,35 @@ AnimatedPath.prototype.getValue = function (time) {
                 this.onKeyframeChange();
             }
         }
-        return this.getValueAtTime(time);
+
+        this.setCurves(time);
+    }
+};
+
+AnimatedPath.prototype.setCurves = function (time) {
+    var delta = ( time - this.lastFrame.t );
+    var duration = this.nextFrame.t - this.lastFrame.t;
+    var elapsed = delta / duration;
+    if (elapsed > 1) elapsed = 1;
+    else if (elapsed < 0) elapsed = 0;
+    else if (this.easing) elapsed = this.easing(elapsed);
+    var actualVertices = [];
+
+    for (var i = 0; i < this.verticesCount; i++) {
+        var cp1x = this.lerp(this.lastFrame.v[i][0], this.nextFrame.v[i][0], elapsed),
+            cp1y = this.lerp(this.lastFrame.v[i][1], this.nextFrame.v[i][1], elapsed),
+            cp2x = this.lerp(this.lastFrame.v[i][2], this.nextFrame.v[i][2], elapsed),
+            cp2y = this.lerp(this.lastFrame.v[i][3], this.nextFrame.v[i][3], elapsed),
+            x = this.lerp(this.lastFrame.v[i][4], this.nextFrame.v[i][4], elapsed),
+            y = this.lerp(this.lastFrame.v[i][5], this.nextFrame.v[i][5], elapsed);
+
+        actualVertices.push([cp1x, cp1y, cp2x, cp2y, x, y]);
+        console.log(actualVertices);
+    }
+
+    for (var j = 1; j < this.curves.length; j++) {
+        this.curves[j].setPoints(actualVertices[j - 1], actualVertices[j]);
+        this.curves[j].getLength(this.lerp(this.lastFrame.len[j], this.nextFrame.len[j], elapsed));
     }
 };
 
@@ -57,36 +88,7 @@ AnimatedPath.prototype.setEasing = function () {
     }
 };
 
-AnimatedPath.prototype.getValueAtTime = function (time) {
-    var delta = ( time - this.lastFrame.t );
-    var duration = this.nextFrame.t - this.lastFrame.t;
-    var elapsed = delta / duration;
-    if (elapsed > 1) elapsed = 1;
-    else if (elapsed < 0) elapsed = 0;
-    else if (this.easing) elapsed = this.easing(elapsed);
-    var actualVertices = [],
-        actualLength = [];
 
-    for (var i = 0; i < this.verticesCount; i++) {
-        var cp1x = this.lerp(this.lastFrame.v[i][0], this.nextFrame.v[i][0], elapsed),
-            cp1y = this.lerp(this.lastFrame.v[i][1], this.nextFrame.v[i][1], elapsed),
-            cp2x = this.lerp(this.lastFrame.v[i][2], this.nextFrame.v[i][2], elapsed),
-            cp2y = this.lerp(this.lastFrame.v[i][3], this.nextFrame.v[i][3], elapsed),
-            x = this.lerp(this.lastFrame.v[i][4], this.nextFrame.v[i][4], elapsed),
-            y = this.lerp(this.lastFrame.v[i][5], this.nextFrame.v[i][5], elapsed);
-
-        actualVertices.push([cp1x, cp1y, cp2x, cp2y, x, y]);
-    }
-
-    for (var j = 0; j < this.verticesCount - 1; j++) {
-        actualLength.push(this.lerp(this.lastFrame.len[j], this.nextFrame.len[j], elapsed));
-    }
-
-    return {
-        v  : actualVertices,
-        len: actualLength
-    }
-};
 
 AnimatedPath.prototype.reset = function (reversed) {
     this.finished = false;

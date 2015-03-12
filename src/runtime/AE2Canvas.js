@@ -114,7 +114,6 @@ Animation.prototype = {
     },
 
     setStep: function (step) {
-        console.log('setStep');
         this.started = false;
         this.compTime = step * this.timeRatio;
         this.pausedTime = this.compTime;
@@ -144,7 +143,6 @@ Animation.prototype = {
                 this.draw(this.compTime);
             }
         } else if (this.drawFrame) {
-            console.log(this.compTime);
             this.drawFrame = false;
             this.draw(this.compTime);
         }
